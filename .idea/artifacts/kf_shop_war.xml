@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="kf-shop:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="kf-shop-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="kf-shop:war exploded" />
+    </root>
+  </artifact>
+</component>

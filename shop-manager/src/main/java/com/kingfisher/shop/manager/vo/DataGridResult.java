@@ -1,0 +1,26 @@
+package com.kingfisher.shop.manager.vo;
+
+import com.kingfisher.shop.manager.model.Brand;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DataGridResult extends ArrayList<Brand> implements Serializable {
+
+    private long total;
+    private List rows;
+    public long getTotal() {
+        return total;
+    }
+    public void setTotal(long total) {
+        this.total = total;
+    }
+    public List getRows() {
+        return rows;
+    }
+    public void setRows(List rows) {
+        this.rows = rows;
+    }
+
+}

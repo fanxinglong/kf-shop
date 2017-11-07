@@ -1,0 +1,12 @@
+com/kingfisher/shop/manager/config/MyBatisConfig.class
+com/kingfisher/shop/manager/model/Brand.class
+com/kingfisher/shop/manager/util/R.class
+com/kingfisher/shop/manager/model/BrandQuery.class
+com/kingfisher/shop/manager/config/DruidConfig.class
+com/kingfisher/shop/manager/ManagerBootstrap.class
+com/kingfisher/shop/manager/controller/BrandController.class
+com/kingfisher/shop/manager/service/impl/BrandServiceImpl.class
+com/kingfisher/shop/manager/controller/CenterController.class
+com/kingfisher/shop/manager/vo/DataGridResult.class
+com/kingfisher/shop/manager/service/BrandService.class
+com/kingfisher/shop/manager/mapper/BrandDao.class
