@@ -1,5 +1,7 @@
 package com.kingfisher.shop.manager.config;
 
+import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,6 +15,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * MyBatis基础配置
@@ -40,7 +43,9 @@ public class MyBatisConfig {
         configuration.setMapUnderscoreToCamelCase(true);
         sqlsession.setConfiguration(configuration);
         sqlsession.setFailFast(true);
-        
+
+        Interceptor[] plugins =  new Interceptor[]{pageHelper()};
+        sqlsession.setPlugins(plugins);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
@@ -61,4 +66,17 @@ public class MyBatisConfig {
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new DataSourceTransactionManager(dataSource);
     }
+    @Bean
+    public PageHelper pageHelper() {
+        PageHelper pageHelper = new PageHelper();
+        //添加配置，也可以指定文件路径
+        Properties p = new Properties();
+        //p.setProperty("offsetAsPageNum", "true");
+        //p.setProperty("rowBoundsWithCount", "true");
+        //p.setProperty("reasonable", "true");
+        p.setProperty("dialect","mysql");
+        pageHelper.setProperties(p);
+        return pageHelper;
+    }
+
 }

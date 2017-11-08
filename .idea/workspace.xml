@@ -1080,13 +1080,21 @@
       <workItem from="1510062367940" duration="1125000" />
       <workItem from="1510063877989" duration="5791000" />
       <workItem from="1510070385140" duration="2546000" />
+<<<<<<< HEAD
       <workItem from="1510073214565" duration="1548000" />
       <workItem from="1510106086389" duration="8894000" />
+=======
+      <workItem from="1510073214565" duration="1620000" />
+>>>>>>> add
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="19904000" />
+=======
+    <option name="totallyTimeSpent" value="11082000" />
+>>>>>>> add
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="793" extended-state="6" />
