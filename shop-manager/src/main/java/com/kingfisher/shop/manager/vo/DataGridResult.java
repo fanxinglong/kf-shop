@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataGridResult extends ArrayList<Brand> implements Serializable {
+public class DataGridResult implements Serializable {
 
     private long total;
     private List rows;

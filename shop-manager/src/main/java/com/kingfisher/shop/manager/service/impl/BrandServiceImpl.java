@@ -1,5 +1,6 @@
 package com.kingfisher.shop.manager.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kingfisher.shop.manager.mapper.BrandDao;
@@ -26,7 +27,8 @@ public class BrandServiceImpl implements BrandService {
 	@Autowired
 	private BrandDao brandDao;
 	//查询分页对象
-	public DataGridResult selectPaginationByQuery(String name, Integer isDisplay, Integer pageNo){
+	@Override
+	public PageInfo<Brand> selectPaginationByQuery(String name, Integer isDisplay, Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
 		//每页数
 		brandQuery.setPageSize(3);
@@ -49,19 +51,14 @@ public class BrandServiceImpl implements BrandService {
 		//设置分页信息
 		PageHelper.startPage(brandQuery.getPageNo(), brandQuery.getPageSize());
 
-//		Pagination pagination = new Pagination(
-//				brandQuery.getPageNo(),
-//				brandQuery.getPageSize(),
-//				brandDao.selectCount(brandQuery)
-//				);
 		List<Brand> list = brandDao.selectBrandListByQuery(brandQuery);
+		PageInfo<Brand> info = new PageInfo<Brand>(list);
+		System.out.println("---------------------"+info.getTotal());
+		System.out.println("---------------------"+info.getPages());
 		//取查询结果
-		PageInfo<Brand> pageInfo = new PageInfo<>(list);
-		DataGridResult result = new DataGridResult();
-		result.setRows(list);
-		result.setTotal(brandDao.selectCount(brandQuery));
+		//int total = brandDao.selectCount(brandQuery);
 		//返回结果
-		return result;
+		return info;
 	}
 	@Override
 	public Brand selectBrandById(Long id) {

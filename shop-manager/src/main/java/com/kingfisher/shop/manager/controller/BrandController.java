@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 
 /**
  * 品牌管理
@@ -30,22 +32,20 @@ public class BrandController {
 	
 	//查询
 	@RequestMapping(value = "/brand/list.do")
-	@ResponseBody
-	public R list(String name, Integer isDisplay, Integer pageNo){
+	public String list(String name, Integer isDisplay, Integer pageNo,Model model){
 		
-		//Pagination pagination = brandService.selectPaginationByQuery(name, isDisplay, pageNo);
-		//model.addAttribute("pagination", pagination);
 		if(null != isDisplay){
-			R.ok().put("isDisplay", isDisplay);
+			model.addAttribute("isDisplay", isDisplay);
 		}else{
-			R.ok().put("isDisplay", 1);
+			model.addAttribute("isDisplay", 1);
 		}
+		PageInfo<Brand> info = brandService.selectPaginationByQuery(name, isDisplay, pageNo);
 
-		DataGridResult result = brandService.selectPaginationByQuery(name, isDisplay, pageNo);
-		//return result;
-		/////////
-		 //= brandService.selectPaginationByQuery(name, isDisplay, pageNo);
-		return R.ok().put("pagination", new PageInfo<Brand>(result)).put("name", name).put("data", result);
+
+		model.addAttribute("pagination",info);
+		model.addAttribute("name",name);
+
+		return "/brand/list";
 
 	}
 	//去修改页面

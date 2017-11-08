@@ -116,9 +116,9 @@ public class DruidConfig {
         }
 
         List<Filter> filters = new ArrayList<>();
-        filters.add(statFilter());
-        filters.add(wallFilter());
-        datasource.setProxyFilters(filters);
+        //filters.add(statFilter());
+        //filters.add(wallFilter());
+        //datasource.setProxyFilters(filters);
 
         return datasource;
     }
